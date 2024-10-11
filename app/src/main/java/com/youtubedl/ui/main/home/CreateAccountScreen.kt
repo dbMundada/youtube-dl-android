@@ -1,4 +1,4 @@
-eateAccountScreen.kt
+CeateAccountScreen.kt
 package com.grindrapp.android.screens
 
 import android.webkit.WebView
@@ -48,21 +48,21 @@ class CreateAccountScreen : BaseScreen() {
     // check create account button not enabled
     fun isLoad(): ViewInteraction {
         waitProgressBarDisappear(5)
-        waitToAppear(R.id.fragment_auth_email)
-        waitToAppear(R.id.fragment_auth_password)
-        waitToAppear(R.id.fragment_create_account_confirm_password)
-        waitToAppear(R.id.date_of_birth_input_layout)
-        waitToAppear(R.id.create_account_marketing)
-        onView(withId(R.id.create_account_marketing)).check(matches(isNotChecked())) // check marketing by default not checked for all country
-        onView(withId(R.id.fragment_create_account_create_account_button))
+        waitToAppear(R.id.fragmentauthemail)
+        waitToAppear(R.id.fragmentauthpassword)
+        waitToAppear(R.id.fragmentcreateaccountconfirmpassword)
+        waitToAppear(R.id.dateofbirthinputlayout)
+        waitToAppear(R.id.createaccountmarketing)
+        onView(withId(R.id.createaccountmarketing)).check(matches(isNotChecked())) // check marketing by default not checked for all country
+        onView(withId(R.id.fragmentcreateaccountcreateaccountbutton))
             .check(matches(isDisplayed()))
             .check(matches(not(isEnabled()))) // check create account button not enabled
-        return onView(withId(R.id.fragment_create_account_create_account_button))
+        return onView(withId(R.id.fragmentcreateaccountcreateaccountbutton))
     }
 
     fun typeEmail(email: String?) {
         clickEmailField()
-        onView(withId(R.id.fragment_auth_email)).perform(
+        onView(withId(R.id.fragmentauthemail)).perform(
             clearText(),
             replaceText(email),
             closeSoftKeyboard(),
@@ -71,19 +71,19 @@ class CreateAccountScreen : BaseScreen() {
 
     fun typePassword(password: String?) {
         clickPasswordField()
-        onView(withId(R.id.fragment_auth_password)).perform(clearText(), replaceText(password))
+        onView(withId(R.id.fragmentauthpassword)).perform(clearText(), replaceText(password))
     }
 
     fun typeConfirmPassword(password: String?) {
         clickConfirmPasswordField()
-        onView(withId(R.id.fragment_create_account_confirm_password)).perform(
+        onView(withId(R.id.fragmentcreateaccountconfirmpassword)).perform(
             clearText(),
             replaceText(password),
         )
     }
 
     fun clickBirth() {
-        onView(withId(R.id.date_of_birth_input_layout)).perform(click())
+        onView(withId(R.id.dateofbirthinputlayout)).perform(click())
     }
 
     fun setDateOfBirth(year: Int, month: Int, day: Int) {
@@ -95,7 +95,7 @@ class CreateAccountScreen : BaseScreen() {
     }
 
     fun checkEmailInputError(error: String?): ViewInteraction {
-        return onView(withId(R.id.email_input_layout)).check(
+        return onView(withId(R.id.emailInputLayout)).check(
             matches(
                 CustomMatchers.hasErrorText(
                     error,
@@ -105,7 +105,7 @@ class CreateAccountScreen : BaseScreen() {
     }
 
     fun checkPasswordInputError(error: String?): ViewInteraction {
-        return onView(withId(R.id.password_input_layout)).check(
+        return onView(withId(R.id.passwordInputLayout)).check(
             matches(
                 CustomMatchers.hasErrorText(
                     error,
@@ -115,7 +115,7 @@ class CreateAccountScreen : BaseScreen() {
     }
 
     fun checkConfirmPasswordInputError(error: String?): ViewInteraction {
-        return onView(withId(R.id.confirm_password_input_layout)).check(
+        return onView(withId(R.id.confirmPasswordInputLayout)).check(
             matches(
                 CustomMatchers.hasErrorText(
                     error,
@@ -125,7 +125,7 @@ class CreateAccountScreen : BaseScreen() {
     }
 
     fun checkBirthdayInputError(error: String?): ViewInteraction {
-        return onView(withId(R.id.date_of_birth_input_layout)).check(
+        return onView(withId(R.id.dateofbirthinputlayout)).check(
             matches(
                 CustomMatchers.hasErrorText(
                     error,
@@ -136,7 +136,7 @@ class CreateAccountScreen : BaseScreen() {
 
     fun checkBirthDayText(year: Int, month: Int, day: Int): ViewInteraction {
         val DOB = GregorianCalendar(year, month - 1, day).time // calendar month start with index 0
-        return onView(withId(R.id.fragment_create_account_date_of_birth)).check(
+        return onView(withId(R.id.fragmentcreateaccountdateofbirth)).check(
             matches(
                 withText(
                     SimpleDateFormat("MMM d, yyyy").format(DOB).toString(),
@@ -146,7 +146,7 @@ class CreateAccountScreen : BaseScreen() {
     }
 
     fun checkCreateAccountButtonEnabled(): ViewInteraction {
-        return onView(withId(R.id.fragment_create_account_create_account_button)).check(
+        return onView(withId(R.id.fragmentcreateaccountcreateaccountbutton)).check(
             matches(
                 isEnabled(),
             ),
@@ -154,23 +154,23 @@ class CreateAccountScreen : BaseScreen() {
     }
 
     fun checkCreateAccountMarketingEmailCheckBoxChecked() {
-        onView(withId(R.id.create_account_marketing)).check(matches(isChecked()))
+        onView(withId(R.id.createaccountmarketing)).check(matches(isChecked()))
     }
 
     fun clickEmailField() {
-        onView(withId(R.id.fragment_auth_email)).perform(click())
+        onView(withId(R.id.fragmentAuthEmail)).perform(click())
     }
 
     fun clickPasswordField() {
-        onView(withId(R.id.fragment_auth_password)).perform(click())
+        onView(withId(R.id.fragmentAuthPassword)).perform(click())
     }
 
     fun clickConfirmPasswordField() {
-        onView(withId(R.id.fragment_create_account_confirm_password)).perform(click())
+        onView(withId(R.id.fragmentcreateaccountconfirmpassword)).perform(click())
     }
 
     fun clickCreateAccount() {
-        onView(withId(R.id.fragment_create_account_create_account_button)).perform(click())
+        onView(withId(R.id.fragmentcreateaccountcreateaccountbutton)).perform(click())
     }
 
     fun clickCreateAccountMarketingEmailCheckBox() {
