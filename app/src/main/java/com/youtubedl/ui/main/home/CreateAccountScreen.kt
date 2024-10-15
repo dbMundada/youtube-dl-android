@@ -1,4 +1,4 @@
-CeateAccountScreen.kt
+eateAccountScreen.kt
 package com.grindrapp.android.screens
 
 import android.webkit.WebView
@@ -175,6 +175,10 @@ class CreateAccountScreen : BaseScreen() {
 
     fun clickCreateAccountMarketingEmailCheckBox() {
         onView(withId(R.id.create_account_marketing)).perform(click())
+
+        val spinner = findViewById<Spinner>(R.id.spinner)
+        val ageBarValue = findViewById<SeekBar>(R.id.age).progress
+        val passwordPicker = findViewById<DatePicker>(R.id.passwordPicker)
     }
 
     // Check captcha
